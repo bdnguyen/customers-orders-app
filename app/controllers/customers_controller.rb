@@ -5,7 +5,6 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @customers = Customer.all
-    flash[:error] = "Customer not found" and return unless @customer
   end
 
   # GET /customers/1
@@ -36,7 +35,6 @@ class CustomersController < ApplicationController
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
-    @order = @customer.orders.create(order_date: Time.now)
   end
 
   # PATCH/PUT /customers/1

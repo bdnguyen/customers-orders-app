@@ -1,9 +1,10 @@
 <h1>Listing customers</h1>
 
-<table>
+<table border=1>
   <thead>
     <tr>
       <th>Name</th>
+      <th>ID</th>
       <th>Adress</th>
       <th></th>
       <th></th>
@@ -15,10 +16,11 @@
     <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.name %></td>
+        <td><%= customer.id %></td>
         <td><%= customer.adress %></td>
         <td><%= link_to 'Show', customer %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', customer, method: :delete, data: { confirm: 'Are you sure? All customer\'s orders will be deleted.' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +28,6 @@
 
 <br>
 
-<%= link_to 'New Customer', new_customer_path %>
+<%= link_to 'New Customer', new_customer_path %> |
+<%= link_to 'Orders', orders_path %> |
+<%= link_to 'Back', root_path %>

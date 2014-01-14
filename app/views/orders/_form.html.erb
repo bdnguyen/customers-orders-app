@@ -12,13 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :customer_id %><br>
+    <%= f.label "Customer's ID" %><br>
     <%= f.text_field :customer_id %>
   </div>
   <div class="field">
     <%= f.label :order_date %><br>
     <%= f.datetime_select :order_date %>
   </div>
+  <p>
+    Status:
+    <br>
+    <%= f.label :radio1, "Placed", :checked => true  %>
+    <%= f.radio_button :status, "Placed" %>
+    <%= f.label :radio2, "Ready" %>
+    <%= f.radio_button :status, "Ready" %>
+    <%= f.label :radio3, "Shipped" %>
+    <%= f.radio_button :status, "Shipped"%>
+  </p> 
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,10 +1,12 @@
 <h1>Listing orders</h1>
 
-<table>
+<table border=1>
   <thead>
     <tr>
       <th>Customer</th>
+      <th>ID</th>
       <th>Order date</th>
+      <th>Status</th>
       <th></th>
       <th></th>
       <th></th>
@@ -13,17 +15,23 @@
 
   <tbody>
     <% @orders.each do |order| %>
+      <% unless order.customer.blank? %>
       <tr>
-        <td><%= order.customer %></td>
-        <td><%= order.order_date %></td>
+        <td><%= order.customer.name %></td>
+        <td><%= order.customer.id %></td>
+        <td><%= order.order_date %></td>        
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'New Order', new_order_path %> |
+<%= link_to 'Customers', customers_path %> |
+<%= link_to 'Back', root_path %>
+
